@@ -91,7 +91,11 @@ section{padding:96px 0}
 /* 表紙グリッド（アプリと同じ4列） */
 .cover-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:5px}
 .cover{position:relative;aspect-ratio:3/4.2;border-radius:3px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,.25);display:flex;align-items:flex-end;padding:4px;color:#fff;font-family:var(--mincho);font-weight:800;font-size:7.5px;line-height:1.3}
-.cover span{position:relative;text-shadow:0 1px 2px rgba(0,0,0,.6)}
+.cover .ttl{position:relative;text-shadow:0 1px 2px rgba(0,0,0,.6)}
+.cover.has-img .ttl{display:none}
+#hero-phone .cover-grid{grid-template-columns:repeat(3,1fr);gap:6px}
+#hero-phone .cover{font-size:9px}
+#hero-phone .cover .unread-dot{font-size:7.5px;padding:1px 4px}
 .cover .unread-dot{position:absolute;top:3px;right:3px;font-family:var(--gothic);font-size:6px;font-weight:700;background:rgba(150,95,30,.85);color:#fff;padding:0 3px;border-radius:4px;z-index:2}
 .view-covers .spine-grid{display:none}
 .view-spines .cover-grid{display:none}
@@ -238,6 +242,8 @@ section{padding:96px 0}
 .r-vertical .page{height:auto;width:100%}
 @keyframes vscroll{to{transform:translateY(-50%)}}
 .mode-vertical .r-vertical{display:block}
+.mode-vertical .r-bar{background:rgba(17,17,17,.94)}
+.page img.fill~.no{display:none}
 .mode-vertical .r-stage,.mode-vertical .r-hint,.mode-vertical .r-seek{display:none}
 .r-stage .p2{display:none}
 .mode-spread .r-stage .p2{display:block}
@@ -354,7 +360,7 @@ footer a:hover{text-decoration:underline}
           <div class="app-chips"><span>未読のみ</span></div>
           <div class="app-body">
             <div class="spine-grid" data-shelf="hero"></div>
-            <div class="cover-grid" data-covers="hero"></div>
+            <div class="cover-grid" data-covers="hero" data-count="9"></div>
           </div>
           <div class="app-ad">AD</div>
         </div>
@@ -731,14 +737,15 @@ footer a:hover{text-decoration:underline}
   // 表紙一覧（img/cover-01.jpg〜 を置くとその画像を表示。無ければ色＋タイトル）
   var CV=[["星降る町の喫茶店","#2f5aa8","#8fb7e8"],["鉄と花","#a81b31","#e7a08e"],["灯台守の日記","#c8b98d","#4f7fa8"],["雨の日の魔法使い","#5e3f86","#9f8fd6",2],
           ["ねこ町通信","#d2832f","#f2d38a"],["白銀のリフレイン","#2b3445","#b8c6d6"],["月曜日のドラゴン","#2d8e88","#e9c46a",1],["放課後シグナル","#e26062","#ffd6a0"],
-          ["深海図書館","#123a5c","#3fa7b5",1],["夏の終わりの方程式","#3c7fc0","#f4e1a1"],["北風レストラン","#7a8f6a","#e8e1cf"],["花と剣の王国","#8c2440","#f0b9c4"],
+          ["北風レストラン","#7a8f6a","#e8e1cf"],["夏の終わりの方程式","#3c7fc0","#f4e1a1"],["深海図書館","#123a5c","#3fa7b5",1],["花と剣の王国","#8c2440","#f0b9c4"],
           ["空色ポストマン","#4aa3d9","#ffffff"],["夜明けの観測所","#26365c","#f3a65a"],["きつね坂の古書店","#b4562b","#f1d7a6",1],["はじめての一年","#e8a0a8","#fff3e0"]];
   document.querySelectorAll("[data-covers]").forEach(function(h){
-    CV.forEach(function(c,i){
+    var n=+(h.getAttribute("data-count")||CV.length);
+    CV.slice(0,n).forEach(function(c,i){
       var el=document.createElement("div");el.className="cover";
       el.style.background="radial-gradient(circle at 72% 28%,"+c[2]+" 0 20%,transparent 21%),linear-gradient(165deg,"+c[1]+","+c[2]+")";
-      var s=document.createElement("span");s.textContent=c[0];el.appendChild(s);
-      var im=document.createElement("img");im.className="fill";im.alt="";im.src="img/cover-"+("0"+(i+1)).slice(-2)+".jpg";im.onerror=function(){this.remove();};el.appendChild(im);
+      var s=document.createElement("span");s.className="ttl";s.textContent=c[0];el.appendChild(s);
+      var im=document.createElement("img");im.className="fill";im.alt="";im.src="img/cover-"+("0"+(i+1)).slice(-2)+".jpg";im.onload=function(){el.classList.add("has-img");};im.onerror=function(){this.remove();};el.appendChild(im);
       if(c[3]){var u=document.createElement("span");u.className="unread-dot";u.textContent="未読"+c[3];el.appendChild(u);}
       h.appendChild(el);
     });
@@ -748,7 +755,7 @@ footer a:hover{text-decoration:underline}
   function minis(sel,nums,cls){var h=document.querySelector(sel);if(!h)return;nums.forEach(function(n,i){var e=document.createElement("i");e.style.backgroundImage="url("+img(n)+")";if(cls&&cls(i))e.className="new";h.appendChild(e);});}
   minis('[data-mini="spines"]',[3,1,5,7,10,11,4,2,8,9]);
   var mc=document.querySelector('[data-mini="covers"]');
-  CV.slice(0,8).forEach(function(c){var e=document.createElement("i");e.style.background="linear-gradient(165deg,"+c[1]+","+c[2]+")";mc.appendChild(e);});
+  CV.slice(0,8).forEach(function(c,i){var e=document.createElement("i");e.style.background="url(img/cover-0"+(i+1)+".jpg) center/cover,linear-gradient(165deg,"+c[1]+","+c[2]+")";mc.appendChild(e);});
   minis('[data-mini="swatches"]',[1,2,3,4,5,6,7,8,9,10,11]);
   var plus=document.createElement("span");plus.className="plus";plus.textContent="+";document.querySelector('[data-mini="swatches"]').appendChild(plus);
   minis('[data-mini="delta"]',[3,1,5,7,10],function(i){return i===4;});
