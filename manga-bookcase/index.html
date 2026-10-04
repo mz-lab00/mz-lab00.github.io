@@ -250,24 +250,42 @@ section{padding:96px 0}
 .zoom-hint{position:absolute;right:16px;bottom:56px;z-index:2;font-size:9px;color:#fff;background:rgba(0,0,0,.5);border-radius:6px;padding:2px 6px}
 .mode-vertical .zoom-hint,.mode-spread .zoom-hint{display:none}
 
-/* ===== 使い方いろいろ ===== */
-.scenes{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
-.scene{background:#fff;border:1px solid var(--line);border-radius:24px;overflow:hidden;display:flex;flex-direction:column}
-.scene.main{grid-column:1/-1;display:grid;grid-template-columns:1.1fr 1fr}
-.scene-visual{position:relative;aspect-ratio:16/10;background:var(--vbg,var(--bg1));display:flex;align-items:center;justify-content:center;padding:22px;overflow:hidden}
-.scene.main .scene-visual{aspect-ratio:auto;min-height:320px}
-.scene-visual .spine-grid{width:min(260px,100%);position:relative}
-.scene.main .scene-visual .spine-grid{width:min(360px,100%)}
-.scene-visual .spine .t{font-size:9.5px}
-.scene.main .scene-visual .spine .t{font-size:12px}
-.scene-body{padding:24px 26px 28px}
-.scene.main .scene-body{padding:40px;align-self:center}
-.tag{display:inline-block;font-size:12px;font-weight:700;color:var(--accent-dark);background:var(--accent-soft);border-radius:999px;padding:3px 12px}
-.scene h3{font-size:20px;margin:12px 0 8px}
-.scene.main h3{font-size:clamp(22px,2.8vw,28px)}
-.scene p{font-size:14.5px;color:var(--ink-soft)}
-.folder{margin-top:12px;font-family:ui-monospace,Consolas,monospace;font-size:12px;color:#7d8a97}
-@media (max-width:900px){.scenes{grid-template-columns:1fr}.scene.main{grid-template-columns:1fr}.scene.main .scene-body{padding:26px}}
+/* ===== 使い方いろいろ（アイデア） ===== */
+.idea{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;margin-bottom:110px}
+.idea.rev .idea-visual{order:2}
+.idea-visual{position:relative;margin-bottom:30px}
+.idea-photo{position:relative;border-radius:28px;overflow:hidden;aspect-ratio:4/3.2;background:var(--bg1)}
+.idea-shelf{position:absolute;right:-16px;bottom:-34px;width:min(300px,64%);background:#fff;border-radius:18px;padding:12px 14px 6px;box-shadow:0 20px 40px -18px rgba(110,50,60,.45);border:1px solid var(--line)}
+.idea.rev .idea-shelf{right:auto;left:-16px}
+.idea-shelf .cap{font-size:11px;font-weight:700;color:var(--ink-soft);margin-bottom:8px}
+.idea-shelf .spine-grid{gap:5px}
+.idea-shelf .spine .t{font-size:9px}
+.idea-label{font-size:13px;font-weight:700;color:var(--accent);letter-spacing:.1em}
+.idea h3{font-size:clamp(22px,2.8vw,30px);margin:8px 0 14px}
+.idea .intro{color:var(--ink-soft)}
+.tips{list-style:none;padding:0;margin:24px 0 0;display:grid;gap:14px;counter-reset:t}
+.tips li{position:relative;padding-left:40px}
+.tips li::before{counter-increment:t;content:counter(t);position:absolute;left:0;top:2px;width:26px;height:26px;border-radius:50%;background:var(--accent-soft);color:var(--accent-dark);font-weight:900;font-size:13px;display:grid;place-items:center}
+.tips b{display:block;font-size:15.5px}
+.tips span{display:block;font-size:14px;color:var(--ink-soft)}
+.idea .tree{margin-top:22px;font-size:12px;line-height:1.9;padding:12px 16px;background:var(--bg2);border:0}
+.more-head{text-align:center;margin-bottom:28px}
+.more-head h3{font-size:clamp(20px,2.6vw,26px)}
+.more{display:grid;grid-template-columns:1.15fr 1fr;gap:20px}
+.more-main{position:relative;border-radius:24px;overflow:hidden;min-height:340px;display:flex;align-items:flex-end;background:var(--bg2)}
+.more-main .txt{position:relative;margin:16px;background:rgba(255,255,255,.94);border-radius:16px;padding:18px 20px}
+.more-main h4,.more-item h4{margin:0 0 4px;font-size:17px;font-weight:900}
+.more-main p,.more-item p{font-size:14px;color:var(--ink-soft)}
+.more-list{display:grid;gap:14px}
+.more-item{display:flex;gap:16px;align-items:flex-start;background:#fff;border:1px solid var(--line);border-radius:18px;padding:18px 20px}
+.more-item .ico{flex:0 0 auto;width:46px;height:46px;border-radius:14px;background:var(--bg1);display:grid;place-items:center}
+.more-item svg{width:24px;height:24px;fill:none;stroke:var(--accent-dark);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+@media (max-width:900px){
+  .idea{grid-template-columns:1fr;gap:56px;margin-bottom:80px}
+  .idea.rev .idea-visual{order:0}
+  .idea-shelf,.idea.rev .idea-shelf{right:12px;left:auto;bottom:-40px}
+  .more{grid-template-columns:1fr}
+}
 
 /* ===== はじめ方 ===== */
 .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;counter-reset:s}
@@ -529,55 +547,78 @@ footer a:hover{text-decoration:underline}
   <div class="wrap">
     <div class="sec-head reveal">
       <span class="eyebrow">Ideas</span>
-      <h2>マンガも、思い出も、作品集も。</h2>
-      <p class="lead">画像が入ったフォルダなら、なんでも1冊の本になります。</p>
+      <h2>マンガだけじゃない。<br>思い出も、本棚に。</h2>
+      <p class="lead">画像の入ったフォルダなら、なんでも1冊の本になります。<br>たとえば、こんな使い方。</p>
     </div>
-    <div class="scenes">
-      <article class="scene main reveal">
-        <div class="scene-visual" style="--vbg:var(--bg1)">
-          <div class="spine-grid" data-shelf="manga"></div>
-          <img class="fill" src="img/scene-manga.jpg" alt="スマホでマンガの本棚を眺めている様子" onerror="this.remove()">
+
+    <article class="idea reveal">
+      <div class="idea-visual">
+        <div class="idea-photo"><img class="fill" src="img/scene-album.jpg" alt="おばあちゃんと子どもがスマホでアルバムを見ている様子" onerror="this.remove()"></div>
+        <div class="idea-shelf"><p class="cap">本棚では、こう並びます</p><div class="spine-grid" data-shelf="family"></div></div>
+      </div>
+      <div>
+        <p class="idea-label">IDEA 01 ／ 家族のアルバム</p>
+        <h3>子どもの成長を、<br>1年1冊の本棚に。</h3>
+        <p class="intro">スマホに何千枚もたまっていく子どもの写真。お気に入りだけを年ごとのフォルダに選んでおけば、背表紙の並ぶ「成長の記録」になります。</p>
+        <ol class="tips">
+          <li><b>「0歳」「1歳」…と分けて、1本の背表紙に</b><span>「こどもアルバム」の中を年ごとに分けると、本棚では「こどもアルバム 4冊」とまとまり、0歳から順に並びます。</span></li>
+          <li><b>いちばんの笑顔を表紙に</b><span>表紙にしたい写真を選んで、好きな範囲で切り抜けます。</span></li>
+          <li><b>新しく足した写真は「_未読」へ</b><span>家族が開いたときに「未読」の印がつくので、新しい写真が増えたことにすぐ気づけます。</span></li>
+          <li><b>横にして、2枚ずつめくる</b><span>見開き表示にすれば、紙のアルバムをめくるような感覚で楽しめます。</span></li>
+        </ol>
+        <div class="tree">
+          <b>Manga</b><br>
+          ├ <span class="ic"></span>こどもアルバム ／ 0歳・1歳・2歳<br>
+          ├ <span class="ic"></span>運動会 ／ 2024・2025<br>
+          └ <span class="ic"></span>_未読 ／ こどもアルバム ／ 3歳
         </div>
-        <div class="scene-body">
-          <span class="tag">マンガ</span>
-          <h3>持っているマンガを、<br>ずらりと背表紙で。</h3>
-          <p>画像にした手持ちのマンガや、即売会で手に入れた作品をシリーズごとに本棚へ。続きの巻も迷わず見つかり、最後のページからそのまま次の巻へ進めます。</p>
-          <p class="folder">Manga / 作品名 / 第1巻, 第2巻 …</p>
+      </div>
+    </article>
+
+    <article class="idea rev reveal">
+      <div class="idea-visual">
+        <div class="idea-photo"><img class="fill" src="img/scene-travel.jpg" alt="海の見える窓辺のテーブルに、旅のノートとスマホ" onerror="this.remove()"></div>
+        <div class="idea-shelf"><p class="cap">本棚では、こう並びます</p><div class="spine-grid" data-shelf="travel"></div></div>
+      </div>
+      <div>
+        <p class="idea-label">IDEA 02 ／ 旅の写真集</p>
+        <h3>旅ごとに1冊、<br>自分だけの旅行記を。</h3>
+        <p class="intro">撮った写真に、チケットや地図のスクリーンショット、メモの写真も一緒に。あとから何度でも読み返せる、旅の記録になります。</p>
+        <ol class="tips">
+          <li><b>ファイル名の頭に「01_」「02_」</b><span>ページはファイル名の順に並ぶので、旅の順番どおりにめくれます。</span></li>
+          <li><b>行き先ごとにまとめる</b><span>「北海道」の中に「2023 冬」「2025 夏」と分ければ、同じ場所の旅が1本の背表紙に、年の順で並びます。</span></li>
+          <li><b>残したい数十枚だけを選ぶ</b><span>全部入れるより、選んだ写真だけのほうが「写真集」として見返しやすくなります。</span></li>
+          <li><b>縦読みで、どんどん流して見る</b><span>上から下へスクロールして、旅の流れを一気に振り返れます。</span></li>
+        </ol>
+        <div class="tree">
+          <b>Manga</b><br>
+          └ <span class="ic"></span>北海道<br>
+          &nbsp;&nbsp;&nbsp;├ <span class="ic"></span>2023 冬<br>
+          &nbsp;&nbsp;&nbsp;└ <span class="ic"></span>2025 夏 ／ <span class="ic img"></span>01_空港.jpg・02_小樽.jpg …
         </div>
-      </article>
-      <article class="scene reveal">
-        <div class="scene-visual" style="--vbg:#f4eef6">
-          <div class="spine-grid" data-shelf="family"></div>
-          <img class="fill" src="img/scene-album.jpg" alt="家族でスマホのアルバムを見ている様子" onerror="this.remove()">
+      </div>
+    </article>
+
+    <div class="more-head reveal"><h3>ほかにも、こんな本棚に。</h3></div>
+    <div class="more">
+      <div class="more-main reveal">
+        <img class="fill" src="img/scene-art.jpg" alt="スケッチブックと筆、スマホが並ぶ机" onerror="this.remove()">
+        <div class="txt"><h4>スケッチ・イラストの作品集</h4><p>描いたものをスキャンして、年ごとやテーマごとに。積み重ねてきたものが、そのままポートフォリオになります。</p></div>
+      </div>
+      <div class="more-list">
+        <div class="more-item reveal">
+          <span class="ico"><svg viewBox="0 0 24 24"><path d="M4 20h16"/><path d="M6 20V9l6-5 6 5v11"/><circle cx="12" cy="13" r="2.5"/></svg></span>
+          <div><h4>子どもの絵の作品集</h4><p>冷蔵庫に貼りきれない絵や工作を写真に撮って、学年ごとの1冊に。</p></div>
         </div>
-        <div class="scene-body">
-          <span class="tag">家族のアルバム</span>
-          <h3>子どもの1年を、1冊ずつ</h3>
-          <p>「0歳」「入園式」「運動会」。年ごと・行事ごとのフォルダが、成長の記録の背表紙に。</p>
+        <div class="more-item reveal">
+          <span class="ico"><svg viewBox="0 0 24 24"><path d="M5 4h11l3 3v13H5z"/><path d="M8 9h8M8 13h8M8 17h5"/></svg></span>
+          <div><h4>手書きのレシピ帖</h4><p>家族のレシピや雑誌の切り抜きを撮っておけば、台所でピンチして拡大しながら見られます。</p></div>
         </div>
-      </article>
-      <article class="scene reveal">
-        <div class="scene-visual" style="--vbg:var(--bg2)">
-          <div class="spine-grid" data-shelf="travel"></div>
-          <img class="fill" src="img/scene-travel.jpg" alt="旅先の写真をスマホで見返す様子" onerror="this.remove()">
+        <div class="more-item reveal">
+          <span class="ico"><svg viewBox="0 0 24 24"><circle cx="7" cy="9" r="2"/><circle cx="17" cy="9" r="2"/><circle cx="10" cy="5" r="1.8"/><circle cx="14" cy="5" r="1.8"/><path d="M12 11c-3 0-5 3.5-5 6 0 1.5 1.5 2 2.5 2s1.5-.6 2.5-.6 1.5.6 2.5.6 2.5-.5 2.5-2c0-2.5-2-6-5-6z"/></svg></span>
+          <div><h4>ペットの成長記録</h4><p>うちの子の写真を月ごとや年ごとに。背表紙が増えていくのも楽しみに。</p></div>
         </div>
-        <div class="scene-body">
-          <span class="tag">旅の写真集</span>
-          <h3>旅行ごとに、自分だけの写真集</h3>
-          <p>選んだ写真をフォルダに入れるだけ。ページをめくって楽しめる1冊になります。</p>
-        </div>
-      </article>
-      <article class="scene reveal">
-        <div class="scene-visual" style="--vbg:#f3f5ec">
-          <div class="spine-grid" data-shelf="art"></div>
-          <img class="fill" src="img/scene-art.jpg" alt="スケッチブックとスマホが並ぶ机" onerror="this.remove()">
-        </div>
-        <div class="scene-body">
-          <span class="tag">イラスト・作品集</span>
-          <h3>描いてきたものをポートフォリオに</h3>
-          <p>スケッチのスキャンやイラストを年ごとに。積み重ねてきたものが棚に並びます。</p>
-        </div>
-      </article>
+      </div>
     </div>
   </div>
 </section>
@@ -704,18 +745,15 @@ footer a:hover{text-decoration:underline}
     doragon:["月曜日のドラゴン",2,1,4], houka:["放課後シグナル",3,0,2], shinkai:["深海図書館",1,1,8],
     natsu:["夏の終わりの方程式",4,0,9], kita:["北風レストラン",2,0,6], hana:["花と剣の王国",7,0,1],
     sora:["空色ポストマン",3,0,2], yoru:["夜明けの観測所",2,0,8], kitsune:["きつね坂の古書店",1,1,10], mori:["森のアトリエ便り",2,0,6], kaze:["風見鶏ラジオ",4,0,3], hoshi2:["星読みの少女",3,1,9], koori:["氷の城と千の鍵",5,0,11], yumi:["弓張月の旅人",2,0,4],
-    al0:["はじめての一年",1,0,4], al1:["1歳 よく笑う",1,0,9], al2:["入園式",1,0,5], al3:["運動会 2025",1,0,10], al4:["おばあちゃん家",1,0,2],
-    tr0:["2023 京都 紅葉",1,0,1], tr1:["2024 春 台湾",1,0,6], tr2:["2025 夏 北海道",1,0,3], tr3:["週末キャンプ",1,0,2], tr4:["海辺の町",1,0,8],
-    ar0:["スケッチ 2022",1,0,11], ar1:["スケッチ 2023",1,0,11], ar2:["水彩 小品集",1,0,5], ar3:["手書きレシピ帖",1,0,10], ar4:["落書きノート",1,0,9]
+    fa0:["こどもアルバム",4,1,4], fa1:["運動会",2,0,10], fa2:["七五三",1,0,5], fa3:["家族旅行",3,0,2], fa4:["じいじとばあば",2,0,9],
+    tr0:["北海道",2,0,3], tr1:["京都",3,0,1], tr2:["台湾",1,0,6], tr3:["週末キャンプ",5,0,2], tr4:["海辺の町めぐり",2,0,8]
   };
   var SH={
     hero:["hoshi","tetsu","todai","ame","neko","gin","doragon","houka","shinkai","natsu","kita","hana","sora","yoru","kitsune","mori","kaze","hoshi2","koori","yumi"],
     transform:["hoshi","tetsu","todai","ame"],
     unread:["ame","shinkai","kitsune"],
-    manga:["hoshi","tetsu","todai","ame","neko","gin","doragon","houka","shinkai","natsu"],
-    family:["al0","al1","al2","al3","al4"],
+    family:["fa0","fa1","fa2","fa3","fa4"],
     travel:["tr0","tr1","tr2","tr3","tr4"],
-    art:["ar0","ar1","ar2","ar3","ar4"],
     cta:["hoshi","ame","gin","natsu","kitsune"]
   };
   function spine(k){
