@@ -260,6 +260,15 @@ section{padding:96px 0}
 .idea-shelf .cap{font-size:11px;font-weight:700;color:var(--ink-soft);margin-bottom:8px}
 .idea-shelf .spine-grid{gap:5px}
 .idea-shelf .spine .t{font-size:9px}
+.idea-shelf .cap-row{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:4px 6px;margin-bottom:8px}
+.idea-shelf .cap-row .cap{margin:0;white-space:nowrap}
+.mini-toggle{display:flex;flex:none;background:var(--accent-soft);border-radius:999px;padding:2px}
+.mini-toggle button{border:0;background:transparent;font-family:var(--gothic);font-size:10px;font-weight:700;color:var(--ink-soft);padding:3px 9px;border-radius:999px;cursor:pointer}
+.mini-toggle button[aria-pressed="true"]{background:#fff;color:var(--accent-dark)}
+.album-covers{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;padding-bottom:8px}
+.album-covers .album{display:flex;flex-direction:column;gap:3px;min-width:0}
+.album-covers .nm{font-size:9px;line-height:1.25;font-weight:700;color:var(--ink);text-align:center;word-break:break-all}
+[hidden]{display:none!important}
 .idea-label{font-size:13px;font-weight:700;color:var(--accent);letter-spacing:.1em}
 .idea h3{font-size:clamp(22px,2.8vw,30px);margin:8px 0 14px}
 .idea .intro{color:var(--ink-soft)}
@@ -554,7 +563,11 @@ footer a:hover{text-decoration:underline}
     <article class="idea reveal">
       <div class="idea-visual">
         <div class="idea-photo"><img class="fill" src="img/scene-album.jpg" alt="おばあちゃんと子どもがスマホでアルバムを見ている様子" onerror="this.remove()"></div>
-        <div class="idea-shelf"><p class="cap">本棚では、こう並びます</p><div class="spine-grid" data-shelf="family"></div></div>
+        <div class="idea-shelf">
+          <div class="cap-row"><p class="cap">本棚では、こう並びます</p><div class="mini-toggle" role="group" aria-label="並べ方"><button type="button" data-v="covers" aria-pressed="true">表紙</button><button type="button" data-v="spines" aria-pressed="false">背表紙</button></div></div>
+          <div class="album-covers" data-albums></div>
+          <div class="spine-grid" data-shelf="family" hidden></div>
+        </div>
       </div>
       <div>
         <p class="idea-label">IDEA 01 ／ 家族のアルバム</p>
@@ -788,6 +801,28 @@ footer a:hover{text-decoration:underline}
       h.appendChild(el);
     });
   });
+
+  // IDEA 01：家族のアルバムを表紙で並べた見本（表紙／背表紙を切り替え）
+  var AL=[["こどもアルバム","album-01",1],["運動会","album-02"],["七五三","album-03"],["家族旅行","album-04"]];
+  var ah=document.querySelector("[data-albums]");
+  if(ah){
+    AL.forEach(function(a){
+      var w=document.createElement("div");w.className="album";
+      var c=document.createElement("div");c.className="cover has-img";
+      var im=document.createElement("img");im.className="fill";im.alt="";im.loading="lazy";im.src="img/"+a[1]+".jpg";c.appendChild(im);
+      if(a[2]){var u=document.createElement("span");u.className="unread-dot";u.textContent="未読"+a[2];c.appendChild(u);}
+      var n=document.createElement("span");n.className="nm";n.textContent=a[0];
+      w.appendChild(c);w.appendChild(n);ah.appendChild(w);
+    });
+    var box=ah.parentNode,sg=box.querySelector('[data-shelf="family"]');
+    box.querySelectorAll(".mini-toggle button").forEach(function(btn){
+      btn.addEventListener("click",function(){
+        var cov=btn.getAttribute("data-v")==="covers";
+        ah.hidden=!cov;sg.hidden=cov;
+        box.querySelectorAll(".mini-toggle button").forEach(function(b){b.setAttribute("aria-pressed",String(b===btn));});
+      });
+    });
+  }
 
   // 小さな図
   function minis(sel,nums,cls){var h=document.querySelector(sel);if(!h)return;nums.forEach(function(n,i){var e=document.createElement("i");e.style.backgroundImage="url("+img(n)+")";if(cls&&cls(i))e.className="new";h.appendChild(e);});}
