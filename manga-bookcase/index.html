@@ -3,6 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <title>Manga Bookcase — Dropboxのマンガを、本棚に並べて読む</title>
 <meta name="description" content="Manga Bookcaseは、Dropboxに入れたマンガや画像のフォルダを背表紙の並ぶ本棚に整理して、右開き・左開き・縦読み・見開きで快適に読めるAndroidアプリです。">
 <meta property="og:title" content="Manga Bookcase — フォルダが、本棚になる。">
@@ -58,8 +60,7 @@ section{padding:96px 0}
 .site-header{position:sticky;top:0;z-index:30;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
 .site-header .wrap{height:64px;display:flex;align-items:center;justify-content:space-between;gap:16px}
 .brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:900;font-size:18px}
-.brand-mark{width:30px;height:30px;border-radius:8px;overflow:hidden;display:flex;gap:2px;padding:5px 6px;background:var(--deep)}
-.brand-mark i{flex:1;border-radius:1px;background-size:100% 100%}
+.brand-mark{width:30px;height:30px;border-radius:8px;display:block;box-shadow:0 0 0 1px var(--line)}
 .nav{display:flex;gap:24px;font-size:14px}
 .nav a{text-decoration:none;color:var(--ink-soft)}
 .nav a:hover{color:var(--accent)}
@@ -357,7 +358,7 @@ footer a:hover{text-decoration:underline}
 
 <header class="site-header">
   <div class="wrap">
-    <a class="brand" href="#top"><span class="brand-mark" aria-hidden="true"><i style="background-image:url(img/spines/se001.jpg)"></i><i style="background-image:url(img/spines/se002.jpg)"></i><i style="background-image:url(img/spines/se005.jpg)"></i></span>Manga Bookcase</a>
+    <a class="brand" href="#top"><img class="brand-mark" src="../icon-192.png" alt="" width="30" height="30">Manga Bookcase</a>
     <nav class="nav" aria-label="ページ内リンク">
       <a href="#shelf">本棚</a>
       <a href="#viewer">ビューアー</a>

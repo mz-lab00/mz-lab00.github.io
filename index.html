@@ -3,6 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <title>MZ lab</title>
 <meta name="description" content="MZ lab - Android app developer / Androidアプリ開発">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -25,6 +27,8 @@
   .en { color: var(--sub); font-size: .95rem; }
   .card { border: 1px solid var(--line); border-radius: 8px; padding: 16px; }
   .card h3 a { color: inherit; text-decoration: none; }
+  .app-title { display: flex; align-items: center; gap: 12px; margin-bottom: 8px; }
+  .app-title img { border-radius: 10px; box-shadow: 0 0 0 1px var(--line); }
   .card h3 a:hover { text-decoration: underline; }
   .links { display: flex; flex-wrap: wrap; gap: 8px 20px; margin-top: 12px; }
   a { color: var(--accent); }
@@ -38,7 +42,7 @@
 
   <h2>アプリ / Apps</h2>
   <div class="card">
-    <h3><a href="manga-bookcase/">Manga Bookcase</a></h3>
+    <h3 class="app-title"><img src="icon-192.png" alt="" width="40" height="40"><a href="manga-bookcase/">Manga Bookcase</a></h3>
     <p>Dropboxに保存した画像フォルダを、本棚のように整理して表示・閲覧できるビューアーアプリです。</p>
     <p class="en">A viewer app that organizes the image folders in your Dropbox like a bookshelf.</p>
     <p class="links">
