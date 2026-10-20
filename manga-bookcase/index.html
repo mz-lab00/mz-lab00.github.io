@@ -5,10 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<title>Manga Bookcase — Dropboxのマンガを、本棚に並べて読む</title>
-<meta name="description" content="Manga Bookcaseは、Dropboxに入れたマンガや画像のフォルダを背表紙の並ぶ本棚に整理して、右開き・左開き・縦読み・見開きで快適に読めるAndroidアプリです。">
-<meta property="og:title" content="Manga Bookcase — フォルダが、本棚になる。">
-<meta property="og:description" content="Dropboxのマンガを、背表紙の並ぶ本棚に。読む向きも、めくり心地も、思いどおり。">
+<title>Manga Bookcase — Dropboxの漫画を、快適に読む。</title>
+<meta name="description" content="Dropboxの漫画を、快適に読む。表紙で選べる。好きな向きで読める。Manga Bookcaseは、Dropboxに入れた漫画や画像のフォルダを表紙や背表紙の並ぶ本棚に整理して、右開き・左開き・縦読みで読めるAndroidアプリです。">
+<meta property="og:title" content="Manga Bookcase — Dropboxの漫画を、快適に読む。">
+<meta property="og:description" content="表紙で選べる。好きな向きで読める。Dropboxの漫画を本棚に並べて読める、Android向けビューアー。">
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://mz-lab.net/manga-bookcase/img/ogp.jpg">
 <meta property="og:image:width" content="1200">
@@ -76,15 +76,6 @@ section{padding:96px 0}
 .phone{position:relative;width:280px;aspect-ratio:9/19.5;background:#14181d;border-radius:42px;padding:10px;box-shadow:0 30px 60px -24px rgba(110,50,60,.45),0 0 0 1px rgba(0,0,0,.25);flex:0 0 auto}
 .phone::after{content:"";position:absolute;top:17px;left:50%;width:10px;height:10px;border-radius:50%;background:#000;transform:translateX(-50%);z-index:3}
 .screen{position:relative;height:100%;background:#fff;border-radius:33px;overflow:hidden;display:flex;flex-direction:column}
-.app-top{padding:36px 12px 6px;display:flex;align-items:center;justify-content:space-between}
-.app-top b{font-size:16px;font-weight:900}
-.app-top .icons{display:flex;gap:8px;color:#8a929b;font-size:13px}
-.app-search{margin:2px 12px 6px;border:1px solid #e3e6ea;border-radius:8px;padding:5px 9px;font-size:10px;color:#9aa1a8;background:#f6f7f9}
-.app-chips{display:flex;gap:5px;margin:0 12px 8px}
-.app-chips span{font-size:9px;font-weight:700;padding:3px 8px;border-radius:999px;border:1px solid #d9dde2;color:#5f6770;background:#fff}
-.app-chips span.on{background:#0a84ff;border-color:#0a84ff;color:#fff}
-.app-body{flex:1;overflow:hidden;padding:0 10px}
-.app-ad{height:38px;margin:6px 8px 9px;border-radius:6px;background:#f1f3f5;border:1px dashed #d4d9de;font-size:9px;color:#a3aab1;display:grid;place-items:center;letter-spacing:.1em}
 
 /* 背表紙グリッド（アプリと同じ5列・76:176） */
 .spine-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:6px}
@@ -99,9 +90,6 @@ section{padding:96px 0}
 .cover{position:relative;aspect-ratio:3/4.2;border-radius:3px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,.25);display:flex;align-items:flex-end;padding:4px;color:#fff;font-family:var(--mincho);font-weight:800;font-size:7.5px;line-height:1.3}
 .cover .ttl{position:relative;text-shadow:0 1px 2px rgba(0,0,0,.6)}
 .cover.has-img .ttl{display:none}
-#hero-phone .cover-grid{grid-template-columns:repeat(3,1fr);gap:6px}
-#hero-phone .cover{font-size:9px}
-#hero-phone .cover .unread-dot{font-size:7.5px;padding:1px 4px}
 .cover .unread-dot{position:absolute;top:3px;right:3px;font-family:var(--gothic);font-size:6px;font-weight:700;background:rgba(150,95,30,.85);color:#fff;padding:0 3px;border-radius:4px;z-index:2}
 .view-covers .spine-grid{display:none}
 .view-spines .cover-grid{display:none}
@@ -112,7 +100,16 @@ section{padding:96px 0}
 .hero h1{font-size:clamp(28px,4.4vw,50px);letter-spacing:.01em;margin-top:14px}
 .hero h1 .ln{display:inline-block;white-space:nowrap}
 .hero h1 .mark{background:linear-gradient(transparent 64%,var(--accent-soft) 64%)}
-.hero .lead{margin-top:22px;max-width:31em}
+.hero .lead{margin-top:18px;max-width:31em}
+.hero-sub{margin-top:14px;font-size:clamp(17px,2vw,22px);font-weight:700;color:var(--accent)}
+.shot-screen{padding-top:26px;background:#fff}
+.shot-screen .shot{display:block;width:100%;height:auto}
+#hero-phone.view-covers .shot-spines,#hero-phone.view-spines .shot-covers{display:none}
+/* ===== アプリの画面（スクリーンショット） ===== */
+.screens{display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;padding:6px 4px 18px;margin:0 -4px;-webkit-overflow-scrolling:touch}
+.screens figure{flex:0 0 auto;width:min(230px,62vw);margin:0;scroll-snap-align:start}
+.screens img{display:block;width:100%;height:auto;border-radius:18px;box-shadow:0 14px 30px -18px rgba(110,50,60,.45);border:1px solid var(--line)}
+.screens-hint{text-align:center;font-size:13px;color:var(--ink-soft);margin-top:4px}
 .hero-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
 .hero-note{margin-top:14px;font-size:13px;color:var(--ink-soft)}
 .hero-visual{display:flex;flex-direction:column;align-items:center;position:relative}
@@ -360,6 +357,7 @@ footer a:hover{text-decoration:underline}
   <div class="wrap">
     <a class="brand" href="#top"><img class="brand-mark" src="../icon-192.png" alt="" width="30" height="30">Manga Bookcase</a>
     <nav class="nav" aria-label="ページ内リンク">
+      <a href="#screens">画面</a>
       <a href="#shelf">本棚</a>
       <a href="#viewer">ビューアー</a>
       <a href="#scenes">使い方いろいろ</a>
@@ -377,8 +375,9 @@ footer a:hover{text-decoration:underline}
   <div class="wrap">
     <div class="reveal">
       <span class="eyebrow">Manga &amp; image folder viewer for Dropbox</span>
-      <h1><span class="ln">フォルダが、<span class="mark">本棚</span>になる。</span><br><span class="ln">ページが、するする進む。</span></h1>
-      <p class="lead">Dropboxに入れたマンガのフォルダを、背表紙の並ぶ本棚に。<br>選んだらすぐ、右開きでも縦読みでも、思いどおりに読めます。<br>アルバムや写真集にも使える、Android向けの本棚ビューアーです。</p>
+      <h1><span class="ln">Dropboxの漫画を、</span><br><span class="ln"><span class="mark">快適に</span>読む。</span></h1>
+      <p class="hero-sub">表紙で選べる。好きな向きで読める。</p>
+      <p class="lead">Dropboxに入れた漫画のフォルダを、表紙や背表紙の並ぶ本棚に。<br>選んだらすぐ、右開き・左開き・縦読みで読めます。<br>アルバムや写真集にも使える、Android向けの本棚ビューアーです。</p>
       <div class="hero-cta">
         <a class="btn btn-primary" href="#download">Google Play <small>近日公開</small></a>
         <a class="btn btn-ghost" href="#about">できることを見る</a>
@@ -386,21 +385,15 @@ footer a:hover{text-decoration:underline}
       <p class="hero-note">基本無料（広告つき）・Android対応・Dropboxアカウントが必要です</p>
     </div>
     <div class="hero-visual reveal">
-      <div class="phone view-spines" id="hero-phone">
-        <div class="screen">
-          <div class="app-top"><b>書庫</b><span class="icons">⟳ ⚙</span></div>
-          <div class="app-search">作品名・作者名で検索</div>
-          <div class="app-chips"><span>未読のみ</span></div>
-          <div class="app-body">
-            <div class="spine-grid" data-shelf="hero"></div>
-            <div class="cover-grid" data-covers="hero" data-count="9"></div>
-          </div>
-          <div class="app-ad">AD</div>
+      <div class="phone view-covers" id="hero-phone">
+        <div class="screen shot-screen">
+          <img class="shot shot-covers" src="img/shot-covers.jpg" alt="Manga Bookcaseの本棚画面（表紙で並べた表示）" width="540" height="1004">
+          <img class="shot shot-spines" src="img/shot-spines.jpg" alt="Manga Bookcaseの本棚画面（背表紙で並べた表示）" width="540" height="1004" loading="lazy">
         </div>
       </div>
       <div class="toggle" role="group" aria-label="本棚の表示">
-        <button type="button" data-view="spines" aria-pressed="true">背表紙で並べる</button>
-        <button type="button" data-view="covers" aria-pressed="false">表紙で並べる</button>
+        <button type="button" data-view="covers" aria-pressed="true">表紙で並べる</button>
+        <button type="button" data-view="spines" aria-pressed="false">背表紙で並べる</button>
       </div>
     </div>
   </div>
@@ -429,6 +422,28 @@ footer a:hover{text-decoration:underline}
         <span class="more">ビューアーの機能を見る ↓</span>
       </a>
     </div>
+  </div>
+</section>
+
+<!-- ========== アプリの画面 ========== -->
+<section id="screens">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Screenshots</span>
+      <h2>アプリの画面</h2>
+      <p class="lead">実際のアプリの画面です。表紙や背表紙で並べて、好きな向きで読めます。</p>
+    </div>
+    <div class="screens reveal">
+      <figure><img src="img/screen-01.jpg" alt="表紙で選べる本棚" width="540" height="960" loading="lazy"></figure>
+      <figure><img src="img/screen-02.jpg" alt="未読だけを表示" width="540" height="960" loading="lazy"></figure>
+      <figure><img src="img/screen-03.jpg" alt="巻もすっきり一覧" width="540" height="960" loading="lazy"></figure>
+      <figure><img src="img/screen-04.jpg" alt="好きな向きで読める" width="540" height="960" loading="lazy"></figure>
+      <figure><img src="img/screen-05.jpg" alt="縦読みにも対応" width="540" height="960" loading="lazy"></figure>
+      <figure><img src="img/screen-06.jpg" alt="背表紙の本棚にも" width="540" height="960" loading="lazy"></figure>
+      <figure><img src="img/screen-07.jpg" alt="設定はシンプル" width="540" height="960" loading="lazy"></figure>
+      <figure><img src="img/screen-08.jpg" alt="使い方ガイド付き" width="540" height="960" loading="lazy"></figure>
+    </div>
+    <p class="screens-hint">← 横にスクロールして見られます →</p>
   </div>
 </section>
 
@@ -768,7 +783,6 @@ footer a:hover{text-decoration:underline}
     tr0:["北海道",2,0,3], tr1:["京都",3,0,1], tr2:["台湾",1,0,6], tr3:["週末キャンプ",5,0,2], tr4:["海辺の町めぐり",2,0,8]
   };
   var SH={
-    hero:["hoshi","tetsu","todai","ame","neko","gin","doragon","houka","shinkai","natsu","kita","hana","sora","yoru","kitsune","mori","kaze","hoshi2","koori","yumi"],
     transform:["hoshi","tetsu","todai","ame"],
     unread:["ame","shinkai","kitsune"],
     family:["fa0","fa1","fa2","fa3","fa4"],
