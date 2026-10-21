@@ -141,9 +141,9 @@ section{padding:96px 0}
 .keepzoom p{color:var(--ink-soft);font-size:15px;margin:0 0 10px}
 .kz-demo{display:flex;flex-direction:column;align-items:center}
 .kz-window{position:relative;width:min(300px,100%);aspect-ratio:3/4;border-radius:18px;overflow:hidden;background:#fff;border:8px solid #14181d;box-shadow:0 20px 40px -24px rgba(110,50,60,.45)}
-.kz-strip{position:absolute;top:-30%;left:0;height:160%;display:flex;gap:6px;transform:translateX(-62%);animation:kzpan 7s ease-in-out infinite}
-.kz-strip img{height:100%;width:auto;display:block}
-@keyframes kzpan{0%,18%{transform:translateX(-62%)}50%,68%{transform:translateX(-14%)}100%{transform:translateX(-62%)}}
+.kz-strip{position:absolute;top:-50%;left:0;height:200%;width:max-content;display:flex;gap:6px;transform:translateX(-62%);animation:kzpan 7s ease-in-out infinite}
+.kz-strip img{height:100%;width:auto;aspect-ratio:700/994;flex:0 0 auto;display:block}
+@keyframes kzpan{0%,18%{transform:translateX(-62%)}50%,68%{transform:translateX(-12%)}100%{transform:translateX(-62%)}}
 .kz-zoom{position:absolute;top:10px;right:10px;font-size:11px;font-weight:700;background:rgba(53,42,46,.78);color:#fff;border-radius:999px;padding:2px 9px}
 .kz-hand{position:absolute;bottom:18px;left:50%;font-size:26px;transform:translateX(-50%);animation:kzhand 7s ease-in-out infinite;filter:drop-shadow(0 2px 3px rgba(0,0,0,.3))}
 @keyframes kzhand{0%,18%{transform:translateX(-80%);opacity:.0}22%{opacity:1}50%{transform:translateX(30%);opacity:1}56%,100%{opacity:0;transform:translateX(30%)}}
