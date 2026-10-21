@@ -133,6 +133,24 @@ section{padding:96px 0}
 .pillar.read .more{color:var(--accent2)}
 @media (max-width:820px){.pillars{grid-template-columns:1fr}}
 
+/* ===== こだわり：拡大したままページ送り ===== */
+.keepzoom{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;margin-top:56px;background:#fff;border:1px solid var(--line);border-radius:28px;padding:36px 40px}
+.kz-badge{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.1em;color:#fff;background:var(--accent2);border-radius:999px;padding:3px 12px}
+.keepzoom h3{font-size:clamp(22px,2.8vw,30px);margin:12px 0 14px}
+.keepzoom h3 .ln{display:inline-block}
+.keepzoom p{color:var(--ink-soft);font-size:15px;margin:0 0 10px}
+.kz-demo{display:flex;flex-direction:column;align-items:center}
+.kz-window{position:relative;width:min(300px,100%);aspect-ratio:3/4;border-radius:18px;overflow:hidden;background:#fff;border:8px solid #14181d;box-shadow:0 20px 40px -24px rgba(110,50,60,.45)}
+.kz-strip{position:absolute;top:-30%;left:0;height:160%;display:flex;gap:6px;transform:translateX(-62%);animation:kzpan 7s ease-in-out infinite}
+.kz-strip img{height:100%;width:auto;display:block}
+@keyframes kzpan{0%,18%{transform:translateX(-62%)}50%,68%{transform:translateX(-14%)}100%{transform:translateX(-62%)}}
+.kz-zoom{position:absolute;top:10px;right:10px;font-size:11px;font-weight:700;background:rgba(53,42,46,.78);color:#fff;border-radius:999px;padding:2px 9px}
+.kz-hand{position:absolute;bottom:18px;left:50%;font-size:26px;transform:translateX(-50%);animation:kzhand 7s ease-in-out infinite;filter:drop-shadow(0 2px 3px rgba(0,0,0,.3))}
+@keyframes kzhand{0%,18%{transform:translateX(-80%);opacity:.0}22%{opacity:1}50%{transform:translateX(30%);opacity:1}56%,100%{opacity:0;transform:translateX(30%)}}
+.kz-cap{margin-top:12px;font-size:13px;color:var(--ink-soft)}
+@media (max-width:820px){.keepzoom{grid-template-columns:1fr;padding:28px 22px;gap:28px}}
+@media (prefers-reduced-motion:reduce){.kz-strip,.kz-hand{animation:none}.kz-hand{display:none}}
+
 /* ===== ① 本棚 ===== */
 .pillar-title{display:flex;align-items:center;justify-content:center;gap:10px;font-size:14px;font-weight:700;color:var(--accent)}
 .transform{display:grid;grid-template-columns:1fr auto 1.1fr;gap:28px;align-items:center;background:var(--bg1);border-radius:28px;padding:40px}
@@ -545,7 +563,7 @@ footer a:hover{text-decoration:underline}
           <p id="mode-text">日本のマンガと同じ、左へめくる読み方。画面の左右をタップ、またはスワイプでページが進みます。</p>
         </div>
         <ul class="viewer-list">
-          <li><b>ピンチで拡大</b><span>細かい描き込みも、最大4倍まで</span></li>
+          <li><b>ピンチで拡大</b><span>最大4倍（横長の見開き画像は8倍）まで</span></li>
           <li><b>スライダーで移動</b><span>読みたいページへひと息で</span></li>
           <li><b>前回の続きから</b><span>開けば、読んでいたページから</span></li>
           <li><b>次の巻へそのまま</b><span>最後のページで「次の巻を読む」</span></li>
@@ -567,6 +585,24 @@ footer a:hover{text-decoration:underline}
             <div class="r-seek"></div>
           </div>
         </div>
+      </div>
+    </div>
+    <div class="keepzoom reveal">
+      <div class="kz-text">
+        <span class="kz-badge">こだわり</span>
+        <h3><span class="ln">拡大したまま、</span><span class="ln">次のページへ。</span></h3>
+        <p>細かい文字や絵を拡大したら、そのまま横にスライドするだけで隣のページへ。めくるたびに縮小して、また拡大して…という手間はありません。</p>
+        <p>ページの境目でも止まれるので、見開きの絵もつながったまま楽しめます。読むときの小さなストレスを、ひとつずつ減らしました。</p>
+      </div>
+      <div class="kz-demo" aria-hidden="true">
+        <div class="kz-window">
+          <div class="kz-strip">
+            <img src="img/page-02.jpg" alt=""><img src="img/page-01.jpg" alt="">
+          </div>
+          <span class="kz-zoom">200%</span>
+          <span class="kz-hand">👆</span>
+        </div>
+        <p class="kz-cap">拡大したまま、隣のページへスライド</p>
       </div>
     </div>
   </div>
