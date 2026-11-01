@@ -326,6 +326,12 @@ section{padding:96px 0}
 .step .tree{margin-top:14px;font-size:12px;padding:12px 14px;line-height:1.9}
 .note{font-size:12.5px;color:var(--ink-soft);text-align:center;margin-top:22px}
 @media (max-width:900px){.steps{grid-template-columns:1fr}}
+.howto-link{max-width:620px;margin:28px auto 0}
+.howto-link a{display:grid;grid-template-columns:1fr auto;align-items:center;gap:2px 16px;background:#fff;border:1.5px solid var(--accent-soft);border-radius:18px;padding:16px 22px;text-decoration:none;box-shadow:0 8px 20px -14px rgba(110,50,60,.4)}
+.howto-link a:hover{border-color:var(--accent)}
+.howto-link .hl-t{font-weight:900;font-size:16px}
+.howto-link .hl-s{grid-row:2;font-size:13px;color:var(--ink-soft)}
+.howto-link .hl-arrow{grid-row:1/3;grid-column:2;display:grid;place-items:center;width:38px;height:38px;border-radius:50%;background:var(--accent);color:#fff;font-weight:900}
 
 /* ===== 安心 ===== */
 .trust-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
@@ -722,6 +728,7 @@ footer a:hover{text-decoration:underline}
         <p>アプリの再スキャンボタンを押すと、フォルダが本になって並びます。あとは読むだけ。</p>
       </div>
     </div>
+    <div class="howto-link reveal"><a href="files-howto.html"><span class="hl-t">スマホにダウンロードしたZIP・PDFを入れるには？</span><span class="hl-s">Files アプリでの移動のしかた（画面つき）</span><span class="hl-arrow">→</span></a></div>
     <p class="note">※ Dropboxの言語設定が英語の場合、「アプリ」フォルダは「Apps」と表示されます。　※ 対応する形式：JPEG・PNG・WebPの画像、ZIP・CBZ、RAR・CBR（RARは設定でON）</p>
   </div>
 </section>
