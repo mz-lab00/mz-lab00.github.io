@@ -14,6 +14,9 @@
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:url" content="https://mz-lab.net/manga-bookcase/">
+<link rel="alternate" hreflang="ja" href="https://mz-lab.net/manga-bookcase/">
+<link rel="alternate" hreflang="en" href="https://mz-lab.net/manga-bookcase/en/">
+<link rel="alternate" hreflang="x-default" href="https://mz-lab.net/manga-bookcase/">
 <meta property="og:site_name" content="MZ lab">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -373,6 +376,16 @@ footer a:hover{text-decoration:underline}
 .reveal{opacity:0;transform:translateY(16px);transition:opacity .7s ease,transform .7s ease}
 .reveal.in{opacity:1;transform:none}
 @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}*{animation:none!important}}
+.lang-switch{font-size:13px;font-weight:700;text-decoration:none;color:var(--ink-soft);border:1px solid var(--line);border-radius:999px;padding:6px 12px;white-space:nowrap}
+.lang-switch:hover{color:var(--accent);border-color:var(--accent)}
+.head-right{display:flex;align-items:center;gap:10px}
+.brand{white-space:nowrap}
+@media (max-width:480px){.site-header .wrap{gap:8px}.brand{font-size:16px;gap:8px}.lang-switch{padding:5px 10px;font-size:12px}.head-right{gap:6px}.head-right .btn-sm{padding:8px 13px;font-size:12px}}
+@media (max-width:420px){.hero h1{font-size:24px}}
+@media (max-width:340px){.hero h1 .ln{white-space:normal}}
+@media (max-width:600px){.feat-grid{grid-template-columns:minmax(0,1fr)}}
+.head-right .btn-sm{white-space:nowrap}
+@media (max-width:400px){.head-right .btn-sm{display:none}}
 </style>
 </head>
 <body>
@@ -388,7 +401,7 @@ footer a:hover{text-decoration:underline}
       <a href="#start">はじめ方</a>
       <a href="#faq">よくある質問</a>
     </nav>
-    <a class="btn btn-primary btn-sm" href="#download">ダウンロード</a>
+    <div class="head-right"><a class="lang-switch" href="en/" hreflang="en" lang="en">English</a><a class="btn btn-primary btn-sm" href="#download">ダウンロード</a></div>
   </div>
 </header>
 
@@ -806,6 +819,7 @@ footer a:hover{text-decoration:underline}
     <div><strong style="color:var(--ink)">MZ lab</strong>　© 2026 MZ lab</div>
     <nav aria-label="フッター">
       <a href="../">MZ lab トップ</a>
+      <a href="en/" hreflang="en" lang="en">English</a>
       <a href="privacy.html">プライバシーポリシー</a>
       <a href="mailto:info@mz-lab.net">お問い合わせ</a>
     </nav>
