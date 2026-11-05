@@ -1,0 +1,26 @@
+# MZ lab
+
+> MZ lab is a solo app developer in Japan. Its app, Manga Bookcase, is a bookshelf-style manga and comic reader for Android.
+
+## Manga Bookcase
+
+Manga Bookcase (マンガブックケース) is a free Android app (with ads; a one-time purchase removes them) for reading manga and comics you already have as files — including books you scanned yourself (自炊). It reads from Dropbox, phone storage, or an SD card.
+
+- Formats: folders of JPEG, PNG and WebP images; ZIP, CBZ and PDF files; RAR and CBR (optional setting). Password-protected files and copy-protected store e-books (such as Kindle books) are not supported.
+- Bookshelf: each folder or file becomes one book, shown as covers or spines. Volumes of the same title are grouped. Unread tracking and search by title or author.
+- Reading: right-to-left (manga), left-to-right, vertical scroll, two-page spreads. Zoom is kept when turning pages.
+- Privacy: images are loaded directly to the device and are not sent to MZ lab's servers.
+- Languages: Japanese and English.
+- Platform: Android only (no iPhone or PC version at the moment).
+
+## Links
+
+- [Manga Bookcase (Japanese)](https://mz-lab.net/manga-bookcase/): features, screenshots, FAQ
+- [Manga Bookcase (English)](https://mz-lab.net/manga-bookcase/en/): features, screenshots, FAQ
+- [Google Play](https://play.google.com/store/apps/details?id=com.mz.mangabookcase)
+- [How to move downloaded ZIP/PDF files into the app's folder (Japanese)](https://mz-lab.net/manga-bookcase/files-howto.html)
+- [Privacy policy](https://mz-lab.net/manga-bookcase/privacy.html)
+
+## Contact
+
+- info@mz-lab.net
