@@ -18,6 +18,7 @@ Manga Bookcase (マンガブックケース) is a free Android app (with ads; a 
 - [Manga Bookcase (Japanese)](https://mz-lab.net/manga-bookcase/): features, screenshots, FAQ
 - [Manga Bookcase (English)](https://mz-lab.net/manga-bookcase/en/): features, screenshots, FAQ
 - [Google Play](https://play.google.com/store/apps/details?id=com.mz.mangabookcase)
+- [How to read your own scanned manga (自炊) on your phone (Japanese)](https://mz-lab.net/manga-bookcase/jisui-guide.html): scanning, packing into folders/ZIP/PDF, naming, and reading in Manga Bookcase
 - [How to move downloaded ZIP/PDF files into the app's folder (Japanese)](https://mz-lab.net/manga-bookcase/files-howto.html)
 - [Privacy policy](https://mz-lab.net/manga-bookcase/privacy.html)
 
